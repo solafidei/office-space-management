@@ -30,7 +30,7 @@ router.get("", (req, res, next) => {
   Staff.find().then(documents => {
     res.status(200).json({
       message: 'Staffs fetched successfully',
-      posts: documents
+      staff: documents
     });
     console.log(documents);
   });

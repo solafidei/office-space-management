@@ -7,7 +7,7 @@ const officeSchema = mongoose.Schema({
   phoneNumber: {type: String, required: true},
   maxCapacity: {type: Number, required: true},
   color: {type: String, required: true},
- // staff: {type: mongoose.Schema.Types.ObjectId, ref: 'Staff'}
+ staff: [{type: mongoose.Schema.Types.ObjectId, ref: 'Staff'}]
 });
 
 /* officeSchema.virtual('staffPresent', {

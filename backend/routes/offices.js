@@ -31,7 +31,7 @@ router.put("/:id", (req, res, next) => {
 });
 
 router.get("", (req, res, next) => {
-  Office.find().then(documents => {
+  Office.find().populate('staff').then(documents => {
     res.status(200).json({
       message: 'Offices fetched successfully',
       offices: documents
