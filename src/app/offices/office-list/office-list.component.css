@@ -10,3 +10,10 @@ mat-expansion-panel {
   border-left-style: solid;
   border-left-width: 1rem;
 }
+.add-icon{
+  transform: scale(2.8);
+}
+mat-icon{
+  display: inline-flex;
+  vertical-align: middle;
+}
