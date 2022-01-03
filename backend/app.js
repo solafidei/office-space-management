@@ -2,6 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const officeRoutes = require('./routes/offices');
+const office = require('./models/office');
+
+const staffRoutes = require('./routes/staffs');
+const staff = require('./models/staff');
 const app = express();
 
 mongoose.connect("mongodb+srv://solafidei:enXUKq7EX3BmzGc@cluster0.95jeb.mongodb.net/office-space-management?retryWrites=true&w=majority")
@@ -21,4 +26,6 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/api/offices", officeRoutes);
+app.use("/api/staffs", staffRoutes);
 module.exports = app;

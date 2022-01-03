@@ -1,0 +1,12 @@
+<mat-accordion multi="true">
+  <mat-expansion-panel style.border-left-color="green" *ngFor="let office of offices">
+    <mat-expansion-panel-header>
+      {{office._id}}
+    </mat-expansion-panel-header>
+    <p>{{office.name}}</p>
+    <mat-action-row>
+      <a mat-button color="primary" [routerLink]="['/edit', office._id]" mat-button>EDIT</a>
+      <button color="warn"mat-button>DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
