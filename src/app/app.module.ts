@@ -16,12 +16,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { OfficeListComponent } from './offices/office-list/office-list.component';
+import { OfficeEditComponent } from './offices/office-edit/office-edit.component';
+import { OfficeCreateComponent } from './offices/office-create/office-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    OfficeListComponent
+    OfficeListComponent,
+    OfficeEditComponent,
+    OfficeCreateComponent
   ],
   imports: [
     BrowserModule,

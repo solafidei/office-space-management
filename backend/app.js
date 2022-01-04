@@ -25,7 +25,6 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
   next();
 });
-
 app.use("/api/offices", officeRoutes);
 app.use("/api/staffs", staffRoutes);
 module.exports = app;

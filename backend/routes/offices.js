@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Office = require('../models/office');
+const Staff = require('../models/staff');
 
 router.post("", (req, res, next) => {
   console.log(req.body);
@@ -22,7 +23,8 @@ router.put("/:id", (req, res, next) => {
     email: req.body.email,
     phoneNumber: req.body.phoneNumber,
     maxCapacity: req.body.maxCapacity,
-    color: req.body.color
+    color: req.body.color,
+    staff: req.body.staff
   });
   //const office = new Office(req.body);
   Office.updateOne({_id: req.params.id}, office).then(result => {
@@ -41,7 +43,7 @@ router.get("", (req, res, next) => {
 })
 
 router.get("/:id", (req, res, next) => {
-  Office.findById(req.params.id).then(singleOffice => {
+  Office.findById(req.params.id).populate('staff').then(singleOffice => {
     if (singleOffice)
     res.status(200).json(singleOffice)
     else {

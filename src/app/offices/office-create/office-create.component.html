@@ -1,0 +1,25 @@
+<mat-card>
+  <form (submit)="onSaveOffice(officeForm)" #officeForm="ngForm">
+  <mat-form-field>
+    <input matInput type="text" name="name" [ngModel]="office?.name" required placeholder="Office Name" #name="ngModel">
+    <mat-error *ngIf="name">Please enter an office name</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" name="address" [ngModel]="office?.address" required placeholder="Physical Address" #address="ngModel">
+    <mat-error *ngIf="address">Please enter a physical address</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" name="email" [ngModel]="office?.email" required placeholder="Email Address" #email="ngModel">
+    <mat-error *ngIf="email">Please enter an email address</mat-error>
+  </mat-form-field>
+   <mat-form-field>
+    <input matInput type="text" name="phoneNumber" [ngModel]="office?.phoneNumber" required placeholder="Phone Number" #phoneNumber="ngModel">
+    <mat-error *ngIf="phoneNumber">Please enter a phone number</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="number" name="maxCapacity" [ngModel]="office?.maxCapacity" required placeholder="Maximum Capacity" #maxCapacity="ngModel">
+    <mat-error *ngIf="maxCapacity">Please enter the maximum capacity</mat-error>
+  </mat-form-field>
+  <button color="accent" mat-raised-button type="submit">{{mode == 'create' ? 'Add Office' : 'Update Office'}}</button>
+  </form>
+</mat-card>
