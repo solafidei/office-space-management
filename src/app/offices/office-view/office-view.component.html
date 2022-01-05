@@ -1,0 +1,24 @@
+<mat-accordion multi="true">
+  <mat-expansion-panel [style.border-left-color]="office?.color">
+    <mat-expansion-panel-header>
+      {{office?.name}} <br>
+      {{office?.staff.length}} Members in office
+    </mat-expansion-panel-header>
+    <p><mat-icon>phone</mat-icon>{{office?.phoneNumber}}</p>
+    <p><mat-icon>email</mat-icon>{{office?.email}}</p>
+    <p><mat-icon>group</mat-icon>Office Capacity: {{office?.maxCapacity}}</p>
+    <p><mat-icon>location_on</mat-icon>{{office?.address}}</p>
+    <mat-action-row>
+      <a mat-button color="primary" [routerLink]="['/edit', office?._id]" mat-button>EDIT</a>
+      <button color="warn"mat-button (click)="onDelete(office?._id)">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+  <br>
+</mat-accordion>
+<mat-card *ngFor="let staff of office?.staff">
+  <img mat-card-avatar>
+  <mat-card-title><p>{{staff.firstName}} {{staff.lastName}}</p></mat-card-title>
+</mat-card>
+<br>
+<button mat-button (click)="openDialog()">Open dialog</button>
+  <a routerLink="/addStaff" routerLinkActive="mat-accent"><mat-icon class="add-icon">add_circle_outline</mat-icon></a>

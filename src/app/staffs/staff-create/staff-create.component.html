@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>New Staff Member</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-card>
+      <mat-stepper linear #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill out your Full Name</ng-template>
+          <mat-form-field>
+            <input matInput type="text" name="firstName" formControlName="firstNameFormCtrl" ngModel="office?.address" required placeholder="First Name">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text" name="lastName" formControlName="lastNameFormCtrl" ngModel="office?.address" required placeholder="Last Name">
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext type="button">Next</button>
+          </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form  [formGroup]="secondFormGroup">
+            <mat-form-field>
+              <input matInput placeholder="Address" formControlName="avatarCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="addStaff()">Submit</button>
+            </div>
+          </form>
+        </mat-step>
+      </mat-stepper>
+  </mat-card>
+</mat-dialog-content>

@@ -1,14 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const Staff = require('../models/staff');
+const Office = require('../models/office');
 
 router.post("", (req, res, next) => {
   console.log(req.body);
-  const staff = new Staff(req.body);
-  staff.save().then(createdStaff => {
-    res.status(201).json({
-      message: 'staff added to office',
-      officeId: createdStaff
+  Office.findById(req.body.officeId).then(singleOffice => {
+    const staff = new Staff({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      office: singleOffice
+    });
+    staff.save().then(createdStaff => {
+      res.status(201).json({
+        message: 'staff added to office',
+        officeId: createdStaff
+      });
     });
   });
 });
