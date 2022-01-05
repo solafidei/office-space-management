@@ -15,15 +15,18 @@ export class OfficeListComponent implements OnInit, OnDestroy{
   private officesSub : Subscription = new Subscription;
   constructor(public officesService : OfficesService) {}
 
-  ngOnDestroy(): void {
-
-  }
   ngOnInit(): void {
     this.officesService.getOffices();
     this.officesSub = this.officesService.getOfficesUpdateListener().subscribe((offices: Office[]) => {
       this.offices = offices;
-    })
-
+    });
   }
 
+  onDelete(officeId: string){
+    this.officesService.deleteOffice(officeId);
+  }
+
+  ngOnDestroy(): void {
+    this.officesSub.unsubscribe();
+  }
 }

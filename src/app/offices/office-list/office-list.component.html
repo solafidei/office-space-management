@@ -10,7 +10,7 @@
     <p><mat-icon>location_on</mat-icon>{{office.address}}</p>
     <mat-action-row>
       <a mat-button color="primary" [routerLink]="['/edit', office._id]" mat-button>EDIT</a>
-      <button color="warn"mat-button>DELETE</button>
+      <button color="warn"mat-button (click)="onDelete(office._id)">DELETE</button>
     </mat-action-row>
   </mat-expansion-panel>
   <br>

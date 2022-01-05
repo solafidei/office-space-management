@@ -59,6 +59,11 @@ export class OfficesService {
   }
 
   deleteOffice(officeId: string){
-
+    this.http.delete('http://localhost:3000/api/offices/'+officeId)
+    .subscribe(() => {
+      const updatedOffices = this.offices.filter(office => office._id != officeId);
+      this.offices = updatedOffices;
+      this.officesUpdated.next([...this.offices]);
+    });
   }
 }
