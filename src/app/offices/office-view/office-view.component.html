@@ -1,24 +1,72 @@
-<mat-accordion multi="true">
+<ngx-spinner type="ball-fussion"></ngx-spinner>
+<mat-accordion multi="true" [togglePosition]="'before'">
   <mat-expansion-panel [style.border-left-color]="office?.color">
-    <mat-expansion-panel-header>
-      {{office?.name}} <br>
-      {{office?.staff.length}} Members in office
+    <mat-expansion-panel-header [collapsedHeight]="'80px'">
+      <ul>
+        <li>
+          <h3>
+
+            {{office?.name}}
+          </h3>
+        </li>
+        <li>
+          <mat-icon>group</mat-icon><b>{{office?.staff.length}}</b> Members in office
+        </li>
+      </ul>
     </mat-expansion-panel-header>
-    <p><mat-icon>phone</mat-icon>{{office?.phoneNumber}}</p>
-    <p><mat-icon>email</mat-icon>{{office?.email}}</p>
-    <p><mat-icon>group</mat-icon>Office Capacity: {{office?.maxCapacity}}</p>
-    <p><mat-icon>location_on</mat-icon>{{office?.address}}</p>
+    <div class="panel-content">
+      <p>
+        <mat-icon>phone</mat-icon>{{ office?.phoneNumber }}
+      </p>
+      <p>
+        <mat-icon>email</mat-icon>{{ office?.email }}
+      </p>
+      <p>
+        <mat-icon>group</mat-icon>Office Capacity: {{ office?.maxCapacity }}
+      </p>
+      <p>
+        <mat-icon>location_on</mat-icon>{{ office?.address }}
+      </p>
+    </div>
     <mat-action-row>
-      <a mat-button color="primary" [routerLink]="['/edit', office?._id]" mat-button>EDIT</a>
-      <button color="warn"mat-button (click)="onDelete(office?._id)">DELETE</button>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button [routerLink]="['/edit', office?._id]" mat-menu-item>
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item (click)="onDelete(office?._id)">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+      </mat-menu>
     </mat-action-row>
   </mat-expansion-panel>
-  <br>
+  <br />
 </mat-accordion>
-<mat-card *ngFor="let staff of office?.staff">
-  <img mat-card-avatar>
-  <mat-card-title><p>{{staff.firstName}} {{staff.lastName}}</p></mat-card-title>
+<div class="add-circle">
+  <mat-form-field *ngIf="office?.staff.length > 0">
+    <mat-label>Search</mat-label>
+    <input type="text" matInput [formControl]="myControl" (keypress)="Filter()" />
+  </mat-form-field>
+  <a *ngIf="office?.staff.length < office?.maxCapacity" (click)="openDialog(null)" routerLink="/addStaff"
+    routerLinkActive="mat-accent">
+    <mat-icon [color]="office?.color" class="add-icon">add_circle_outline</mat-icon>
+  </a>
+  <mat-icon *ngIf="office?.staff.length == office?.maxCapacity" color="warn" class="add-icon">block</mat-icon>
+</div>
+<br />
+<mat-card *ngFor="let staff of filteredOptions | async">
+  <img class="small-avatar" [src]="staff.avatarSrc || defaultImg" mat-card-md-image />
+  <mat-card-title>
+    <p>{{ staff.firstName }} {{ staff.lastName }}</p>
+  </mat-card-title>
+  <mat-card-actions>
+    <button mat-button (click)="openDialog(staff)">Edit</button>
+    <button color="warn" mat-button (click)="onDelete(staff?._id)">
+      DELETE
+    </button>
+  </mat-card-actions>
 </mat-card>
-<br>
-<button mat-button (click)="openDialog()">Open dialog</button>
-  <a routerLink="/addStaff" routerLinkActive="mat-accent"><mat-icon class="add-icon">add_circle_outline</mat-icon></a>

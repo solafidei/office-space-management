@@ -1,0 +1,54 @@
+:host {
+  display: block;
+  margin-top: 1rem;
+}
+.info-text {
+  text-align: center;
+}
+
+mat-expansion-panel {
+  border-left-style: solid;
+  border-left-width: 1rem;
+}
+.add-icon {
+  transform: scale(2.8);
+  float: right;
+}
+mat-icon {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-right: 1rem;
+}
+.mat-card:not([class*="mat-elevation-z"]) {
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 1),
+    0 1px 3px 0 rgba(0, 0, 0, 1);
+}
+mat-card {
+  margin-bottom: 10px;
+}
+.add-circle {
+  height: 3rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+}
+.custom-modalbox {
+  width: 1000px;
+}
+.small-avatar {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border-color: transparent;
+  float: left;
+  margin-right: 1rem;
+}
+.panel-content {
+  margin-left: 4rem;
+}
+ul {
+  list-style-type: none;
+  display: inline-block;
+}
+mat-action-row {
+  place-content: space-between;
+}

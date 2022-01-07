@@ -9,12 +9,13 @@ router.post("", (req, res, next) => {
     const staff = new Staff({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
+      avatarSrc: req.body.avatarSrc,
       office: singleOffice
     });
     staff.save().then(createdStaff => {
       res.status(201).json({
         message: 'staff added to office',
-        officeId: createdStaff
+        staffId: createdStaff
       });
     });
   });
@@ -25,9 +26,9 @@ router.put("/:id", (req, res, next) => {
       _id: req.body._id,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      office: req.body.office
+      avatarSrc: req.body.avatarSrc,
+      office: req.body.office,
     });
-    //const staff = new Staff(req.body);
     Staff.updateOne({_id: req.params.id}, staff).then(result => {
       res.status(200).json({message: "Update Successful! "+ staff._id});
     });

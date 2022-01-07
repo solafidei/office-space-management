@@ -1,8 +1,7 @@
-import { Office } from "../offices/office.model";
-
 export interface Staff {
   _id: string,
   firstName: string,
   lastName: string,
+  avatarSrc: string,
   officeId: string
 }

@@ -11,8 +11,6 @@ const officeSchema = mongoose.Schema({
 });
 officeSchema.pre('deleteOne', function(next) {
   const staff = mongoose.model('Staff');
-  console.log("message from pre: "+this);
-  console.log("staff from pre: "+staff);
   staff.deleteMany({_id: {$in: this.staff}}).then(() => next());
 });
 /* officeSchema.virtual('staffPresent', {

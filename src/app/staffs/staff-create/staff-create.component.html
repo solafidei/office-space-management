@@ -1,32 +1,36 @@
 <h2 mat-dialog-title>New Staff Member</h2>
 <mat-dialog-content class="mat-typography">
   <mat-card>
-      <mat-stepper linear #stepper>
-        <mat-step [stepControl]="firstFormGroup">
-          <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Fill out your Full Name</ng-template>
+    <mat-stepper linear #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
           <mat-form-field>
-            <input matInput type="text" name="firstName" formControlName="firstNameFormCtrl" ngModel="office?.address" required placeholder="First Name">
+            <input matInput type="text" name="firstName" formControlName="firstNameFormCtrl" required
+              placeholder="First Name">
           </mat-form-field>
           <mat-form-field>
-            <input matInput type="text" name="lastName" formControlName="lastNameFormCtrl" ngModel="office?.address" required placeholder="Last Name">
+            <input matInput type="text" name="lastName" formControlName="lastNameFormCtrl" required
+              placeholder="Last Name">
           </mat-form-field>
           <div>
-            <button mat-button matStepperNext type="button">Next</button>
+            <button mat-raised-button color="accent" matStepperNext type="button">Next</button>
           </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup">
-          <form  [formGroup]="secondFormGroup">
-            <mat-form-field>
-              <input matInput placeholder="Address" formControlName="avatarCtrl" required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button (click)="addStaff()">Submit</button>
-            </div>
-          </form>
-        </mat-step>
-      </mat-stepper>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ul>
+            <li *ngFor="let image of imageList">
+              <span><img class="small-avatar" [id]="image.src" (click)="imageSelected(image.src)"
+                  [src]="image.src"></span>
+            </li>
+          </ul>
+          <div>
+            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" (click)="saveStaff()">Submit</button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-stepper>
   </mat-card>
 </mat-dialog-content>

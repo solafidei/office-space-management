@@ -3,17 +3,36 @@
   margin-top: 1rem;
 }
 .info-text {
- text-align: center;
+  text-align: center;
 }
 
 mat-expansion-panel {
   border-left-style: solid;
   border-left-width: 1rem;
+  margin-bottom: 10px;
 }
-.add-icon{
+.add-icon {
   transform: scale(2.8);
 }
-mat-icon{
-  display: inline-flex;
+mat-icon {
+  margin-right: 10px;
   vertical-align: middle;
+  margin-right: 1rem;
+}
+.add-circle {
+  height: 3rem;
+  padding-right: 1rem;
+  padding-top: 2rem;
+  float: right;
+}
+
+ul {
+  list-style-type: none;
+  display: inline-block;
+}
+mat-action-row {
+  place-content: space-between;
+}
+.panel-content {
+  margin-left: 4rem;
 }

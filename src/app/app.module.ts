@@ -12,6 +12,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatIconModule } from '@angular/material/icon';
 import { MatStepperModule } from '@angular/material/stepper'
+import { MatMenuModule } from '@angular/material/menu'
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +22,8 @@ import { OfficeListComponent } from './offices/office-list/office-list.component
 import { OfficeCreateComponent } from './offices/office-create/office-create.component';
 import { OfficeViewComponent } from './offices/office-view/office-view.component';
 import { StaffCreateComponent } from './staffs/staff-create/staff-create.component';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
+import * as $ from 'jquery';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,9 @@ import { StaffCreateComponent } from './staffs/staff-create/staff-create.compone
     MatProgressSpinnerModule,
     MatIconModule,
     MatDialogModule,
-    MatStepperModule
+    MatStepperModule,
+    NgxSpinnerModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
