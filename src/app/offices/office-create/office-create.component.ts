@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Office } from '../office.model';
 import { OfficesService } from '../offices.service';
-import * as $ from 'jquery';
 @Component({
   selector: 'app-office-create',
   templateUrl: './office-create.component.html',
@@ -43,7 +42,7 @@ export class OfficeCreateComponent implements OnInit {
         this.officeService.addOffice(form.value.name, form.value.address, form.value.email, form.value.phoneNumber, form.value.maxCapacity, this.selectedColor);
       }
       else {
-        this.officeService.updateOffice(this.officeId, form.value.name, form.value.address, form.value.email, form.value.phoneNumber, form.value.maxCapacity, this.selectedColor);
+        this.officeService.updateOffice(this.officeId, form.value.name, form.value.address, form.value.email, form.value.phoneNumber, form.value.maxCapacity, this.selectedColor, this.office.staff);
       }
     }
     form.resetForm();

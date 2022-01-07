@@ -35,7 +35,7 @@ export class StaffsService {
       });
   }
 
-  deleteStaff(staffId: string) {
-    this.http.delete('http://localhost:3000/api/staffs/' + staffId).subscribe((response) => { console.log(response); this.router.navigate(['/']) });
+  deleteStaff(staffId: string, officeId: string) {
+    this.http.delete('http://localhost:3000/api/staffs/' + staffId).subscribe((response) => { console.log(response); this.router.navigate(['/view/',officeId]) });
   }
 }

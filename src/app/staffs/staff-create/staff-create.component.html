@@ -13,7 +13,7 @@
               placeholder="Last Name">
           </mat-form-field>
           <div>
-            <button mat-raised-button color="accent" matStepperNext type="button">Next</button>
+            <button mat-raised-button color="primary" matStepperNext type="button">Next</button>
           </div>
         </form>
       </mat-step>
@@ -27,7 +27,7 @@
           </ul>
           <div>
             <button mat-raised-button color="accent" matStepperPrevious>Back</button>
-            <button mat-raised-button color="primary" (click)="saveStaff()">Submit</button>
+            <button mat-raised-button color="primary" (click)="saveStaff()">{{ !staff ? "Add Staff Member" : "Update Staff Member" }}</button>
           </div>
         </form>
       </mat-step>

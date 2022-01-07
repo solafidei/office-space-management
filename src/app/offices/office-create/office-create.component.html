@@ -11,18 +11,18 @@
       <mat-error *ngIf="address">Please enter a physical address</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" name="email" [ngModel]="office?.email" required placeholder="Email Address"
-        #email="ngModel" />
+      <input matInput type="text" name="email" [ngModel]="office?.email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required placeholder="Email Address" #email="ngModel" />
       <mat-error *ngIf="email">Please enter an email address</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" name="phoneNumber" [ngModel]="office?.phoneNumber" required placeholder="Phone Number"
-        #phoneNumber="ngModel" />
+      <input matInput type="text" name="phoneNumber" [ngModel]="office?.phoneNumber" pattern="[1-9]{1}[0-9]{9}"
+        maxlength="10" required placeholder="Phone Number" #phoneNumber="ngModel" />
       <mat-error *ngIf="phoneNumber">Please enter a phone number</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="number" name="maxCapacity" [ngModel]="office?.maxCapacity" required
-        placeholder="Maximum Capacity" #maxCapacity="ngModel" />
+      <input matInput type="number" name="maxCapacity" [ngModel]="office?.maxCapacity"
+        [min]="office?.maxCapacity ?? '0'" required placeholder="Maximum Capacity" #maxCapacity="ngModel" />
       <mat-error *ngIf="maxCapacity">Please enter the maximum capacity</mat-error>
     </mat-form-field>
     <label>Office Color</label>

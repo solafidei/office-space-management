@@ -3,6 +3,7 @@ import { Office } from "./office.model";
 import { HttpClient } from "@angular/common/http";
 import { map, Subject } from "rxjs";
 import { Router } from "@angular/router";
+import { Staff } from "../staffs/staff.model";
 
 @Injectable({ providedIn: 'root' })
 export class OfficesService {
@@ -44,8 +45,8 @@ export class OfficesService {
       });
   }
 
-  updateOffice(_id: string, name: string, address: string, email: string, phoneNumber: string, maxCapacity: number, color: string) {
-    const office: Office = { _id: _id, name: name, address: address, email: email, phoneNumber: phoneNumber, maxCapacity: maxCapacity, color: color, staff: [] };
+  updateOffice(_id: string, name: string, address: string, email: string, phoneNumber: string, maxCapacity: number, color: string, staff: Staff[]) {
+    const office: Office = { _id: _id, name: name, address: address, email: email, phoneNumber: phoneNumber, maxCapacity: maxCapacity, color: color, staff: staff };
     this.http.put('http://localhost:3000/api/offices/' + _id, office)
       .subscribe(response => {
         console.log(response);

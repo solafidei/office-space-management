@@ -6,7 +6,7 @@ const officeSchema = mongoose.Schema({
   email: {type: String, required: true},
   phoneNumber: {type: String, required: true},
   maxCapacity: {type: Number, required: true},
-  color: {type: String, required: true},
+  color: {type: String},
  staff: [{type: mongoose.Schema.Types.ObjectId, ref: 'Staff'}]
 });
 officeSchema.pre('deleteOne', function(next) {

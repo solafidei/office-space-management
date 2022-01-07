@@ -36,6 +36,10 @@
           <mat-icon>info</mat-icon>
           <span>View</span>
         </button>
+        <button [routerLink]="['/edit', office?._id]" mat-menu-item>
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
         <button mat-menu-item (click)="onDelete(office?._id)">
           <mat-icon>delete</mat-icon>
           <span>Delete</span>

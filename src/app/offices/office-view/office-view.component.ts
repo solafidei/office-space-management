@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Office } from '../office.model';
 import { OfficesService } from '../offices.service';
@@ -8,7 +8,7 @@ import { Staff } from 'src/app/staffs/staff.model';
 import { StaffsService } from 'src/app/staffs/staffs.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { FormControl } from '@angular/forms';
-import { map, Observable, startWith } from 'rxjs';
+import { first, map, Observable, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-office-view',
@@ -36,7 +36,8 @@ export class OfficeViewComponent implements OnInit {
     });
   }
   onDelete(staffId: string) {
-    this.staffsService.deleteStaff(staffId);
+    this.staffsService.deleteStaff(staffId, this.office._id);
+    window.location.reload();
   }
 
   openDialog(staff: Staff) {
@@ -55,7 +56,7 @@ export class OfficeViewComponent implements OnInit {
 
   private _filter(value: string): Staff[] {
     const filterValue = value.toLowerCase();
-    return this.office.staff.filter(o => o.firstName.toLowerCase().includes(filterValue));
+    return this.office.staff.filter(o => (o.firstName.toLowerCase().includes(filterValue)) ||  (o.lastName.toLowerCase().includes(filterValue)));
   }
   Filter() {
     this.filteredOptions = this.myControl.valueChanges.pipe(

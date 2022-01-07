@@ -51,8 +51,8 @@
     <mat-label>Search</mat-label>
     <input type="text" matInput [formControl]="myControl" (keypress)="Filter()" />
   </mat-form-field>
-  <a *ngIf="office?.staff.length < office?.maxCapacity" (click)="openDialog(null)" routerLink="/addStaff"
-    routerLinkActive="mat-accent">
+  <a *ngIf="office?.staff.length < office?.maxCapacity" (click)="openDialog(null)" [routerLink]="['/view/', office?._id]"
+    routerLinkActive="primary">
     <mat-icon [color]="office?.color" class="add-icon">add_circle_outline</mat-icon>
   </a>
   <mat-icon *ngIf="office?.staff.length == office?.maxCapacity" color="warn" class="add-icon">block</mat-icon>
@@ -64,9 +64,18 @@
     <p>{{ staff.firstName }} {{ staff.lastName }}</p>
   </mat-card-title>
   <mat-card-actions>
-    <button mat-button (click)="openDialog(staff)">Edit</button>
-    <button color="warn" mat-button (click)="onDelete(staff?._id)">
-      DELETE
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
     </button>
+    <mat-menu #menu="matMenu">
+      <button (click)="openDialog(staff)" mat-menu-item>
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item (click)="onDelete(staff?._id)">
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
   </mat-card-actions>
 </mat-card>

@@ -10,7 +10,7 @@ import { StaffsService } from "../staffs.service";
   styleUrls: ['./staff-create.component.css']
 })
 export class StaffCreateComponent implements OnInit {
-  @Input() public officeId;
+  @Input() public officeId : string;
   @Input() public staff: Staff;
   isLinear = false;
   firstFormGroup: FormGroup;
@@ -65,6 +65,6 @@ export class StaffCreateComponent implements OnInit {
   imageSelected(src: string) {
     this.selectedAvatar = src;
     var elementObject = document.getElementById(src);
-    elementObject.classList.add('selector');
+    elementObject?.classList.add('selector');
   }
 }

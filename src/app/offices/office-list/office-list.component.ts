@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Office } from "../office.model";
 import { OfficesService } from '../offices.service';
 import { Observable, Subscription } from "rxjs";
@@ -14,7 +14,6 @@ export class OfficeListComponent implements OnInit, OnDestroy {
 
   offices: Office[] = []
   private officesSub: Subscription = new Subscription;
-  filteredOptions: Observable<Office[]>;
   constructor(public officesService: OfficesService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
@@ -24,8 +23,6 @@ export class OfficeListComponent implements OnInit, OnDestroy {
       this.spinner.hide();
       this.offices = offices;
     });
-    this.filteredOptions = this.officesService.getOfficesUpdateListener();
-
   }
 
   onDelete(officeId: string) {
